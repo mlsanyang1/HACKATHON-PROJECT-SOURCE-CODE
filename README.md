@@ -1,1 +1,1 @@
-# HACKATHON-PROJECT-SOURCE-CODE
+# Blood glucose monitor

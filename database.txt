@@ -1,0 +1,53 @@
+user_basic_infos(
+    id: int = PRIMARY KEY,
+    hematology: boolean,
+    dm: boolean,
+    dateOfDMTest: datetime,
+    dateOfHematologyTest: datetime,
+    typeOfDiabete: string,
+    #unit_id: int = FOREIGN KEY, REFERENCES units(...), 
+    #user_test_report_id: int = FOREIGN KEY, REFERENCES user_test_reports(...)
+);
+
+users(
+    id: int = PRIMARY KEY,
+    fullname: string,
+    mail: string,
+    password: string,
+    #user_basic_info_id: int = FOREIGN KEY, REFERENCES user_basic_infos(...)
+);
+
+units(
+    id: int = PRIMARY KEY, 
+    name: string = glucose || carbohydrate,
+    code: string
+);
+
+user_test_reports(
+    id: int = PRIMARY KEY,
+    wbc: int,
+    lym: int,
+    mon: int,
+    rbc: int,
+    hgb: int,
+    hct: int
+);
+
+blood_glucose_data(
+    id: int = PRIMARY KEY,
+    value: int,
+    tags: string,
+    additional_notes: string,
+    #user_id: int = FOREIGN KEY, REFERENCES users(...)
+);
+
+reports(
+    id: int = PRIMARY KEY,
+    creationDate: datetime,
+    title: string,
+    description: string,
+    status: string = NORMAL || FUNDSCOPY || HB1AC OR WHATEVER,
+    #user_id: int = FOREIGN KEY, REFERENCES users(...)
+);
+
+W/EventBus: Subscriber to unregister was not registered before:
